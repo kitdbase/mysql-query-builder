@@ -11,6 +11,6 @@
       "strict": true,
       "allowSyntheticDefaultImports": true
     },
-    "include": ["src/**/*"], // Incluye los archivos TypeScript
+    "include": ["src/**/*", "checkEnv.js"], // Incluye los archivos TypeScript
     "exclude": ["node_modules", "dist"]
   }

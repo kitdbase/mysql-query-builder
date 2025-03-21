@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node checkEnv.js"
   },
   "keywords": [
     "kitdbase",
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "rollup": "^4.36.0",
     "tsup": "^8.4.0",
     "typescript": "^5.7.2"
   }
