@@ -1,0 +1,60 @@
+# Directories
+examples
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# Logs
+logs
+*.log
+*.log.*
+debug/
+.vscode/
+
+# Build Output
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Environment Variables
+.env
+.env.*.local
+
+# TypeScript
+*.d.ts
+*.js.map
+*.js
+tsconfig.tsbuildinfo
+
+# IDE/Editor Config
+.DS_Store
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# Miscellaneous
+coverage/
+temp/
+*.tmp
+*.temp
+
+# MacOS-specific
+*.DS_Store
+
+# GitHub Actions
+/.github/workflows/*.log
+/.github/workflows/*.cache
+
+# Cursor
+.lh

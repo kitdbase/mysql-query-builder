@@ -1,0 +1,51 @@
+# Directories
+examples
+
+# Ignorar dependencias y configuraciones de desarrollo
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar carpetas y archivos irrelevantes
+.vscode/
+.lh
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignorar configuraciones del proyecto
+.env
+.env.*.local
+package-lock.json
+
+# Ignorar archivos del sistema
+*.swp
+*.swo
+*.tmp
+*.temp
+
+# Ignorar carpetas de trabajo
+temp/
+logs/
+debug/
+
+# Ignorar archivos de compilación
+src/
+tsconfig.json
+tsconfig.tsbuildinfo
+
+# Ignorar pruebas y configuraciones
+tests/
+__tests__/
+__mocks__/
+coverage/
+jest.config.js
+
+# Ignorar documentación o ejemplos no necesarios
+docs/
+examples/
+
+# Asegurarse de incluir solo lo esencial
+!.npmignore

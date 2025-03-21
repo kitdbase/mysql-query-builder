@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext", 
+      "declaration": true, // Generar archivos .d.ts
+      "declarationDir": "./dist",
+      "outDir": "./dist", // Directorio de salida
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "allowSyntheticDefaultImports": true
+    },
+    "include": ["src/**/*"], // Incluye los archivos TypeScript
+    "exclude": ["node_modules", "dist"]
+  }
