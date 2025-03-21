@@ -1,6 +1,6 @@
 {
   "name": "@kitdbase/mysql-orm",
-  "version": "1.1.0",
+  "version": "1.1.8",
   "description": "kitdbase-mysql-orm is a lightweight and fluid library for managing MySQL databases in Node.js. It makes it easy to create MySQL queries without losing flexibility.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "postinstall": "node checkEnv.js"
+    "postinstall": "node scripts/checkEnv.js"
   },
   "keywords": [
     "kitdbase",

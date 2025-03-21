@@ -29,7 +29,6 @@ out/
 # TypeScript
 *.d.ts
 *.js.map
-*.js
 tsconfig.tsbuildinfo
 
 # IDE/Editor Config
