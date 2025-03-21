@@ -53,12 +53,6 @@ const usersTable = db.table("users");
 await usersTable.create([
   { name: "id", type: "INT", options: ["primary", "autoincrement"] },
   { name: "name", type: "VARCHAR", length: 255 },
-  {
-    name: "email",
-    type: "VARCHAR",
-    length: 255,
-    defaultValue: "example@example.com",
-  },
   { name: "age", type: "INT", defaultValue: 18 },
 ]);
 ```
@@ -277,16 +271,14 @@ await usersTable
 Modify existing columns using the edit method.
 
 ```javascript
-await usersTable
-  .columns()
-  .edit([
-    {
-      name: "email",
-      type: "VARCHAR",
-      length: 255,
-      defaultValue: "new@example.com",
-    },
-  ]);
+await usersTable.columns().edit([
+  {
+    name: "email",
+    type: "VARCHAR",
+    length: 255,
+    defaultValue: "new@example.com",
+  },
+]);
 ```
 
 ### Deleting Columns
