@@ -1,5 +1,58 @@
 # @kitdbase/mysql-orm
 
+## Índice
+
+- [Introducción](#introducción)
+- [Características](#características)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Uso básico](#uso-básico)
+  - [Conexión a la base de datos](#conexión-a-la-base-de-datos)
+- [Operaciones de tabla](#operaciones-de-tabla)
+  - [Crear una tabla](#crear-una-tabla)
+  - [Eliminar una tabla](#eliminar-una-tabla)
+- [Operaciones CRUD](#operaciones-crud)
+  - [Insertar datos](#insertar-datos)
+  - [Seleccionar datos](#seleccionar-datos)
+  - [Actualizar datos](#actualizar-datos)
+  - [Eliminar datos](#eliminar-datos)
+- [Consultas avanzadas](#consultas-avanzadas)
+  - [Consulta con WHERE](#consulta-con-where)
+  - [Consulta con OR WHERE](#consulta-con-or-where)
+  - [Consulta con grupos de condiciones WHERE](#consulta-con-grupos-de-condiciones-where)
+  - [Consulta con BETWEEN](#consulta-con-between)
+  - [Consulta con IN](#consulta-con-in)
+  - [Consulta con IS NULL / IS NOT NULL](#consulta-con-is-null--is-not-null)
+  - [Consulta con JOIN](#consulta-con-join)
+  - [Consulta con LEFT JOIN](#consulta-con-left-join)
+  - [Consulta con RIGHT JOIN](#consulta-con-right-join)
+  - [Consulta con ORDER BY](#consulta-con-order-by)
+  - [Consulta con LIMIT y OFFSET](#consulta-con-limit-y-offset-paginación)
+  - [Consulta con GROUP BY](#consulta-con-group-by)
+  - [Consulta con DISTINCT](#consulta-con-distinct)
+- [Funciones de agregación](#funciones-de-agregación)
+  - [count](#count)
+  - [sum](#sum)
+  - [avg](#avg)
+  - [max](#max)
+  - [min](#min)
+- [Buscar registros](#buscar-registros)
+  - [find](#find)
+  - [first](#first)
+- [Gestión de columnas](#gestión-de-columnas)
+  - [Añadir columnas](#añadir-columnas)
+  - [Editar columnas](#editar-columnas)
+  - [Eliminar columnas](#eliminar-columnas)
+- [Ejecutar consultas SQL crudas](#ejecutar-consultas-sql-crudas)
+  - [Manejo de errores](#manejo-de-errores)
+- [API completa](#api-completa)
+  - [Clase MySQL](#clase-mysql)
+  - [Clase TableQuery](#clase-tablequery)
+  - [Clase Columns](#clase-columns)
+- [Licencia](#licencia)
+
+## Introducción
+
 `@kitdbase/mysql-orm` es una biblioteca de Node.js diseñada para simplificar las interacciones con bases de datos MySQL utilizando un enfoque orientado a objetos. Esta biblioteca te permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) fácilmente, así como gestionar la estructura de tus tablas.
 
 ## Características
@@ -49,7 +102,6 @@ Puedes crear una tabla utilizando el método `create`. Define las columnas y sus
 
 ```typescript
 const usersTable = db.table("users");
-
 await usersTable.create([
   { name: "id", type: "INT", options: ["primary", "autoincrement"] },
   { name: "name", type: "VARCHAR", length: 255 },
@@ -77,7 +129,6 @@ const newUsers = await usersTable.insert([
   { name: "Alice", email: "alice@example.com", age: 28 },
   { name: "Bob", email: "bob@example.com", age: 32 },
 ]);
-
 console.log(newUsers); // [{ id: 1, name: 'Alice', ... }, { id: 2, name: 'Bob', ... }]
 ```
 
@@ -114,7 +165,6 @@ Filtra registros utilizando el método `where`.
 
 ```typescript
 const adultUsers = await usersTable.where("age", ">", 18).get();
-
 console.log(adultUsers); // [{ id: 1, name: 'Alice', age: 28 }, ...]
 ```
 
@@ -127,7 +177,6 @@ const users = await usersTable
   .where("age", ">", 25)
   .orWhere("name", "=", "Alice")
   .get();
-
 console.log(users); // [{ id: 1, name: 'Alice', age: 28 }, ...]
 ```
 
@@ -141,7 +190,6 @@ const users = await usersTable
     query.where("age", ">", 25).orWhere("name", "=", "Jane");
   })
   .get();
-
 console.log(users); // [{ id: 1, name: 'Alice', age: 28 }, ...]
 ```
 
@@ -151,7 +199,6 @@ Busca valores entre un rango utilizando `whereBetween`.
 
 ```typescript
 const users = await usersTable.whereBetween("age", [25, 35]).get();
-
 console.log(users); // [{ id: 1, name: 'Alice', age: 28 }, { id: 2, name: 'Bob', age: 32 }]
 ```
 
@@ -161,7 +208,6 @@ Busca valores que coincidan con un conjunto de valores utilizando `whereIn`.
 
 ```typescript
 const users = await usersTable.whereIn("id", [1, 3, 5]).get();
-
 console.log(users); // [{ id: 1, name: 'Alice', age: 28 }, { id: 3, name: 'Charlie', age: 35 }]
 ```
 
@@ -183,7 +229,6 @@ const usersWithOrders = await usersTable
   .join("orders", "users.id", "=", "orders.user_id")
   .select(["users.name", "orders.order_id"])
   .get();
-
 console.log(usersWithOrders); // [{ name: 'Alice', order_id: 101 }, ...]
 ```
 
@@ -196,7 +241,6 @@ const usersWithOrders = await usersTable
   .leftJoin("orders", "users.id", "=", "orders.user_id")
   .select(["users.name", "orders.order_id"])
   .get();
-
 console.log(usersWithOrders); // [{ name: 'Alice', order_id: 101 }, { name: 'Bob', order_id: null }, ...]
 ```
 
@@ -209,7 +253,6 @@ const ordersWithUsers = await usersTable
   .rightJoin("orders", "users.id", "=", "orders.user_id")
   .select(["users.name", "orders.order_id"])
   .get();
-
 console.log(ordersWithUsers); // [{ name: 'Alice', order_id: 101 }, { name: null, order_id: 102 }, ...]
 ```
 
@@ -219,7 +262,6 @@ Ordena resultados utilizando el método `orderBy`.
 
 ```typescript
 const sortedUsers = await usersTable.orderBy("name", "ASC").get();
-
 console.log(sortedUsers); // [{ id: 1, name: 'Alice', ... }, { id: 2, name: 'Bob', ... }]
 ```
 
@@ -230,7 +272,6 @@ Limita el número de resultados y pagina utilizando `limit` y `page`.
 ```typescript
 const firstTwoUsers = await usersTable.limit(2).page(1).get();
 const nextTwoUsers = await usersTable.limit(2).page(2).get();
-
 console.log(firstTwoUsers); // [{ id: 1, name: 'Alice', ... }, { id: 2, name: 'Bob', ... }]
 console.log(nextTwoUsers); // [{ id: 3, name: 'Charlie', ... }, { id: 4, name: 'Dave', ... }]
 ```
@@ -241,7 +282,6 @@ Agrupa resultados utilizando el método `groupBy`.
 
 ```typescript
 const usersByAge = await usersTable.groupBy("age").get();
-
 console.log(usersByAge); // [{ age: 28, count: 1 }, { age: 32, count: 1 }]
 ```
 
@@ -251,7 +291,6 @@ Recupera registros únicos utilizando el método `distinct`.
 
 ```typescript
 const uniqueNames = await usersTable.distinct().select(["name"]).get();
-
 console.log(uniqueNames); // [{ name: 'Alice' }, { name: 'Bob' }]
 ```
 
@@ -664,16 +703,14 @@ await usersTable
 Modifica columnas existentes en la tabla.
 
 ```typescript
-await usersTable
-  .columns()
-  .edit([
-    {
-      name: "email",
-      type: "VARCHAR",
-      length: 255,
-      defaultValue: "example@mail.com",
-    },
-  ]);
+await usersTable.columns().edit([
+  {
+    name: "email",
+    type: "VARCHAR",
+    length: 255,
+    defaultValue: "example@mail.com",
+  },
+]);
 ```
 
 #### `delete(columns: string[]): Promise<boolean>`
