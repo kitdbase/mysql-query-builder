@@ -1,7 +1,7 @@
 export interface Field {
     name: string;
     type: string;
-    defaultValue?: string;
+    defaultValue?: string | null | undefined | number | boolean;
     length?: number;
     options?: string[];
     foreing?: {
