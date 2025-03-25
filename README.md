@@ -2,12 +2,12 @@
 
 ## Language/Lenguaje
 
-- [English](#🚀-english-documentation)
-- [Español](#🚀-documentación-en-español)
+- [English](#english-documentation)
+- [Español](#documentación-en-español)
 
-## 🚀 English documentation
+## English documentation
 
-## Table of contents
+## Table of contents 🚀
 
 - [Introduction](#introduction)
 - [Features](#features)
@@ -732,9 +732,9 @@ await usersTable.columns().delete(["phone"]);
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🚀 Documentación en español
+## Documentación en español
 
-## Índice
+## Tabla de contenidos 🚀
 
 - [Introducción](#introducción)
 - [Características](#características)
