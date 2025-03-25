@@ -1,4 +1,4 @@
-# @kitdbase/mysql-orm
+# @kitdbase/mysql-query-builder
 
 ## Language/Lenguaje
 
