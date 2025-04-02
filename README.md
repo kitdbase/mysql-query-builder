@@ -60,7 +60,7 @@
 
 ## Introduction
 
-`@kitdbase/mysql-orm` is a Node.js library designed to simplify interactions with MySQL databases using an object-oriented approach. This library allows you to easily perform CRUD (Create, Read, Update, Delete) operations and manage your table structures.
+`@kitdbase/mysql-query-builder` is a Node.js library designed to simplify interactions with MySQL databases using an object-oriented approach. This library allows you to easily perform CRUD (Create, Read, Update, Delete) operations and manage your table structures.
 
 ## Features
 
@@ -76,7 +76,7 @@
 To install the library, run the following command:
 
 ```bash
-npm install @kitdbase/mysql-orm
+npm install @kitdbase/mysql-query-builder
 ```
 
 ## Configuration
@@ -98,7 +98,7 @@ MYSQL_PORT=3306
 The connection is automatically established when creating a MySQL instance. You don't need to connect manually.
 
 ```typescript
-import db from "@kitdbase/mysql-orm";
+import db from "@kitdbase/mysql-query-builder";
 ```
 
 ## Table Operations
@@ -787,7 +787,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Introducción
 
-`@kitdbase/mysql-orm` es una biblioteca de Node.js diseñada para simplificar las interacciones con bases de datos MySQL utilizando un enfoque orientado a objetos. Esta biblioteca te permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) fácilmente, así como gestionar la estructura de tus tablas.
+`@kitdbase/mysql-query-builder` es una biblioteca de Node.js diseñada para simplificar las interacciones con bases de datos MySQL utilizando un enfoque orientado a objetos. Esta biblioteca te permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) fácilmente, así como gestionar la estructura de tus tablas.
 
 ## Características
 
@@ -803,7 +803,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Para instalar la biblioteca, ejecuta el siguiente comando:
 
 ```bash
-npm install @kitdbase/mysql-orm
+npm install @kitdbase/mysql-query-builder
 ```
 
 ## Configuración
@@ -825,7 +825,7 @@ MYSQL_PORT=3306
 La conexión se establece automáticamente al crear una instancia de MySQL. No necesitas conectarte manualmente.
 
 ```typescript
-import db from "@kitdbase/mysql-orm";
+import db from "@kitdbase/mysql-query-builder";
 ```
 
 ## Operaciones de tabla
