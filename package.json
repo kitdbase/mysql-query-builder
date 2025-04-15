@@ -1,6 +1,6 @@
 {
   "name": "@kitdbase/mysql-query-builder",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "mysql-query-builder is a lightweight and fluid library for managing MySQL databases in Node.js. It makes it easy to create MySQL queries without losing flexibility.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -38,7 +38,7 @@
     "async",
     "modern database",
     "kitdbase-mysql-orm",
-    "@kitdbase/mysql-orm",
+    "@kitdbase/mysql-query-builder",
     "mysql-query-builder",
     "kitdbase-mysql-query-builder",
     "/2kitdbase/mysql-query-builder",

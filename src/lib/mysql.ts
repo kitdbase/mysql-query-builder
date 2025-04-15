@@ -148,7 +148,7 @@ class TableQuery {
     async create(fields: Field[]) {
         try {
             const fieldsDefinition = fields.map(field => {
-                const { name, type, defaultValue, length, options, foreing } = field;
+                const { name, type, defaultValue, length, options, foreign } = field;
     
                 if (!name || !type) {
                     throw new Error('Cada campo debe tener un nombre y un tipo.');
@@ -178,8 +178,8 @@ class TableQuery {
                 }
     
                 // Si es una llave foránea
-                if (foreing) {
-                    fieldDefinition += `, FOREIGN KEY (\`${name}\`) REFERENCES \`${foreing.table}\`(\`${foreing.column}\`)`;
+                if (foreign) {
+                    fieldDefinition += `, FOREIGN KEY (\`${name}\`) REFERENCES \`${foreign.table}\`(\`${foreign.column}\`)`;
                 }
     
                 return fieldDefinition;
@@ -936,7 +936,7 @@ class Columns {
             const currentFields = await this.get();
     
             for (const field of fields) {
-                const { name, type, length, defaultValue, options, foreing } = field;
+                const { name, type, length, defaultValue, options, foreign } = field;
                 const fullType = (length && type !== "TEXT") ? `${type}(${length})` : type;
     
                 if (!currentFields[name]) {
@@ -962,8 +962,8 @@ class Columns {
                             alterQuery += ' UNIQUE';
                         }
                     }
-                    if (foreing) {
-                        alterQuery += `, ADD FOREIGN KEY (\`${name}\`) REFERENCES \`${foreing.table}\`(\`${foreing.column}\`)`;
+                    if (foreign) {
+                        alterQuery += `, ADD FOREIGN KEY (\`${name}\`) REFERENCES \`${foreign.table}\`(\`${foreign.column}\`)`;
                     }
 
                     await this.#get_response(alterQuery);
@@ -993,7 +993,7 @@ class Columns {
             const currentFields = await this.get();
     
             for (const field of fields) {
-                const { name, type, length, defaultValue, options, foreing } = field;
+                const { name, type, length, defaultValue, options, foreign } = field;
                 const fullType = (length && type !== "TEXT") ? `${type}(${length})` : type;
     
                 if (currentFields[name]) {
@@ -1028,8 +1028,8 @@ class Columns {
                             }
                         }
                         
-                        if (foreing) {
-                            modifyQuery += `, ADD FOREIGN KEY (\`${name}\`) REFERENCES \`${foreing.table}\`(\`${foreing.column}\`)`;
+                        if (foreign) {
+                            modifyQuery += `, ADD FOREIGN KEY (\`${name}\`) REFERENCES \`${foreign.table}\`(\`${foreign.column}\`)`;
                         }
 
                         await this.#get_response(modifyQuery);

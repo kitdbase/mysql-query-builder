@@ -4,7 +4,7 @@ export interface Field {
     defaultValue?: string | null | undefined | number | boolean;
     length?: number;
     options?: string[];
-    foreing?: {
+    foreign?: {
         table: string;
         column: string;
     };
