@@ -41,7 +41,7 @@
     "@kitdbase/mysql-query-builder",
     "mysql-query-builder",
     "kitdbase-mysql-query-builder",
-    "/2kitdbase/mysql-query-builder",
+    "@kitdbase/mysql-query-builder",
     "albert",
     "araya",
     "@kitdbase",
